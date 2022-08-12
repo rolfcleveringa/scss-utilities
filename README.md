@@ -32,9 +32,22 @@ Depending on your setup, you may need to include the full path name:
 @use "../node_modules/scss-utilities/scss-utilities" as *;
 ```
 
+_Note: please make sure you add the correct path. It may be you have your sass file in a subdirectory._
+
 ## Usage
 
 scss-utilities is a collection of usefull mixins and functions. You can use them directly in your own code.
+
+```scss
+@use "scss-utilities" as *;
+
+ul {
+    @include list-unstyled();
+}
+```
+
+In order to prevent naming conflicts, you can also prefix the package, like so:
+
 
 ```scss
 @use "scss-utilities" as su;
