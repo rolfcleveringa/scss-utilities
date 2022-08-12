@@ -1,9 +1,11 @@
 # scss-utilities
 
-[![NPM](https://img.shields.io/npm/v/sass-utilities.svg?style=flat-square)](https://www.npmjs.com/package/scss-utilities)
-[![License: MIT](https://badgen.net/github/license/micromatch/micromatch)](https://github.com/WOTstorm/scss-utilities/blob/main/LICENSE)
+[![NPM](https://img.shields.io/npm/v/scss-utilities.svg?style=flat-square)](https://www.npmjs.com/package/scss-utilities)
+[![License: MIT](https://img.shields.io/npm/l/scss-utilities?style=flat-square)](https://github.com/rolfcleveringa/scss-utilities/blob/main/LICENSE)
 
 A collection of [Sass](https://sass-lang.com/) functions and mixins.
+
+> Please don't use this package yet. For now it's just to test some things with npm packages.
 
 ## Installation
 
@@ -44,8 +46,8 @@ ul {
 
 ## Support
 
-- Create a [GitHub issue](https://github.com/WOTstorm/scss-utilities/issues/new/choose) for bug reports and feature requests.
+- Create a [GitHub issue](https://github.com/rolfcleveringa/scss-utilities/issues/new/choose) for bug reports and feature requests.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/WOTstorm/scss-utilities/blob/main/LICENSE) for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/rolfcleveringa/scss-utilities/blob/main/LICENSE) for details.
