@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a bug report to help improve this package!
+about: Create a bug report to help improve this package.
 title: ''
 labels: ''
 assignees: ''
