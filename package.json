@@ -1,0 +1,24 @@
+{
+  "name": "scss-utilities",
+  "version": "1.0.0",
+  "description": "A collection of SCSS mixins and functions.",
+  "main": "_scss-utilities.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "function",
+    "functions",
+    "helper",
+    "helpers",
+    "mixin",
+    "mixins",
+    "sass",
+    "scss",
+    "util",
+    "utils",
+    "utilities"
+  ],
+  "author": "Rolf Cleveringa",
+  "license": "MIT"
+}
