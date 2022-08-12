@@ -1,0 +1,116 @@
+/// Disabled state of a button.
+///
+/// @group button
+///
+/// @parameter {Int} $opacity-color [$sylph-button-disabled-opacity] - Opacity for the disabled button.
+///
+/// @example scss
+///    .button:disabled {
+///        @include button-disabled(
+///            ...
+///        );
+///    }
+@mixin button-disabled(
+    $opacity: $sylph-button-disabled-opacity
+) {
+    cursor: not-allowed;
+    opacity: $opacity;
+}
+
+/// Reset the button styling.
+///
+/// @group button
+///
+/// @example scss
+///    .button.button-text {
+///        @include button-reset;
+///    }
+@mixin button-reset() {
+    @include sylph-font-size(
+        $font-size: $sylph-button-font-size
+    );
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    color: $base-text-color;
+    cursor: pointer;
+    font-family: $sylph-button-font-family;
+    font-weight: $sylph-button-font-weight;
+
+    &:disabled {
+        @include button-disabled();
+    }
+}
+
+/// Base styling of a button.
+///
+/// @group button
+///
+/// @example scss
+///    .button {
+///        @include button-base();
+///    }
+@mixin button-base {
+    @include sylph-font-size(
+        $font-size: $sylph-button-font-size
+    );
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: $sylph-button-margin;
+    padding: $sylph-button-padding;
+    border: $sylph-button-border;
+    border-radius: $sylph-button-radius;
+    cursor: pointer;
+    transition: $sylph-button-transition;
+    transition-property: $sylph-button-property;
+    font-family: $sylph-button-font-family;
+    font-weight: $sylph-button-font-weight;
+    line-height: $sylph-button-line-height;
+    text-align: center;
+    -webkit-appearance: button;
+    text-decoration: none;
+    text-transform: none;
+
+    &:disabled {
+        @include button-disabled();
+    }
+}
+
+/// Base styling of a button.
+///
+/// @group button
+///
+/// @param {Color} $background-color [$sylph-button-background] - Background of the button.
+/// @param {Color} $background-color-hover [$sylph-button-background-hover] - Background on button hover.
+/// @param {Color} $border-color [$sylph-button-border-color] - Border color of the button.
+/// @param {Color} $border-color-hover [$sylph-button-border-color-hover] - Border color on button hover.
+/// @param {Color} $color [$sylph-button-color] - Color of the button text.
+/// @param {Color} $color-hover [$sylph-button-color-hover] - Color on button hover.
+///
+/// @example scss
+///   @include button-style(
+///       ...
+///   );
+@mixin button-style(
+    $background-color: $sylph-button-background,
+    $background-color-hover: $sylph-button-background-hover,
+    $border-color: $sylph-button-border-color,
+    $border-color-hover: $sylph-button-border-color-hover,
+    $color: $sylph-button-color,
+    $color-hover: $sylph-button-color-hover
+) {
+    background: $background-color;
+    border-color: $border-color;
+    color: $color;
+
+    &:not(:disabled) {
+        &:focus,
+        &:hover {
+            background: $background-color-hover;
+            border-color: $border-color-hover;
+            color: $color-hover;
+        }
+    }
+}

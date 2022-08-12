@@ -1,0 +1,67 @@
+// Font
+//
+// Your standard button suitable for clicking.
+//
+// Markup:
+// <button class="button">Button</button>
+//
+// Style guide: Typography.Font
+// ------
+
+/// Convert font-size in px to rem.
+/// @param {String} $name - Name of the font-family.
+/// @param {String} $file - Name of the font file.
+/// @param {String} $path - Path to the font files.
+/// @param {Map} $formats - Formats of the font that need to be defined
+/// @param {String} $weight - Weight of the font.
+/// @param {String} $style - Style of the font.
+/// @param {String} $display - Display of the font.
+@mixin font-face(
+    $name,
+    $file,
+    $path: '/fonts',
+    $formats: (
+        'woff',
+        'woff2'
+    ),
+    $weight: normal,
+    $style: normal,
+    $display: swap
+) {
+    @font-face {
+        font-family: '#{$name}';
+        @each $format in $formats {
+            src: url('#{$path}/#{$file}.#{$format}') format('#{$format}');
+        }
+        font-weight: $weight;
+        font-style: $style;
+        font-display: $display;
+    }
+}
+
+/// Convert font-size in px to rem.
+/// @param {Number} $font-size [$base-font-size] - The font-size; can be a map.
+@mixin sylph-font-size(
+    $font-size: $base-font-size,
+) {
+    @if type-of($font-size) == 'map' {
+        @each $breakpoint, $size in $font-size {
+            @include breakpoint($breakpoint) {
+                font-size: $size;
+            }
+        }
+    }
+    @else {
+        font-size: $font-size;
+    }
+}
+
+/// Set line-height.
+/// @param {Number} $line-height - The desired line-height.
+/// @param {Number} $base - The base font-size.
+@mixin line-height(
+    $line-height: 12,
+    $base: $base-font-size
+) {
+    line-height: (1 / ($base / ($base * 0 + 1)) * $line-height * 1rem);
+}

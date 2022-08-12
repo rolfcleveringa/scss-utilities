@@ -1,5 +1,10 @@
-///
-/// @group scss-utilities
-///
+// scss-utilities
+// --------------
 
-@import 'src/scss/list';
+// Sass modules
+// https://sass-lang.com/documentation/modules
+@use "sass:math";
+
+// Imports
+@forward 'functions/functions';
+@forward 'mixins/mixins';

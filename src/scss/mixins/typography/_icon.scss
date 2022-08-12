@@ -1,0 +1,44 @@
+// Icon
+// ----
+
+/// Icon
+@mixin icon(
+    $icon: null,
+    $font: $icon-font-family,
+    $weight: $icon-font-weight,
+    $position: after
+) {
+    &::#{$position} {
+        @if $icon {
+            content: $icon;
+        }
+        font-family: $font;
+        font-weight: $weight;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        @content;
+    }
+}
+
+
+@mixin icon-css($content: false) {
+    @if $content {
+        content: '#{$content}';
+    }
+    display: block;
+    font-family: 'icon-font-family', sans-serif !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

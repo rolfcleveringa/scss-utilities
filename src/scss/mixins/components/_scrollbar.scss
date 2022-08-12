@@ -1,0 +1,38 @@
+// Scrollbar
+// ---------
+
+$sylph-scrollbar-width: rem-calc(8) !default;
+$sylph-scrollbar-border-radius: $sylph-scrollbar-width !default;
+$sylph-scrollbar-track: $grey-light !default;
+$sylph-scrollbar-thumb: $grey-medium !default;
+$sylph-scrollbar-thumb-hover: $grey-dark !default;
+
+/// Custom scrollbar styling.
+/// @param {Int} $width - The width of the scrollbar.
+/// @param {Color} $track - The track (progress bar) of the scrollbar.
+/// @param {Color} $thumb - The draggable scrolling handle.
+/// @param {Color} $thumb-hover - The hoer state of the draggable scrolling handle.
+@mixin scrollbar(
+    $width: $sylph-scrollbar-width,
+    $border-radius: $sylph-scrollbar-border-radius,
+    $track: $sylph-scrollbar-track,
+    $thumb: $sylph-scrollbar-thumb,
+    $thumb-hover: $sylph-scrollbar-thumb-hover
+) {
+    &::-webkit-scrollbar {
+        width: $width;
+        border-radius: $border-radius;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $track;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $thumb;
+
+        &:hover {
+            background: $thumb-hover;
+        }
+    }
+}

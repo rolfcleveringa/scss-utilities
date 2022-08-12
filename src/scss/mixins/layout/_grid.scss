@@ -1,0 +1,78 @@
+// Flex grid
+// ----
+
+/// Grid gutter.
+/// @param {String} $property - The property that needs to be set. Can be: margin, padding.
+/// @param {Map} $gutter - The gutter size map.
+/// @param {Int} $factor - The factor to multiply the gutter size with, for setting a negative value.
+@mixin gutter(
+    $property: padding,
+    $gutter: $sylph-grid-gutter-width-breakpoints,
+    $factor: 1
+) {
+    @each $breakpoint, $size in $gutter {
+        @include breakpoint($breakpoint) {
+            #{$property}-right: $size*.5 * $factor;
+            #{$property}-left: $size*.5 * $factor;
+        }
+    }
+}
+
+/// Grid columns.
+/// @param {Map} $columns - The width of the column per breakpoint.
+/// @param {Int} $column-count - The amount of columns that is used.
+@mixin grid-columns(
+    $columns: $sylph-grid-column-breakpoints,
+    $column-count: $sylph-grid-column-count
+) {
+    @each $breakpoint, $size in $columns {
+        @include breakpoint($breakpoint) {
+            width: percentage(math.div($size, $column-count))
+        }
+    }
+}
+
+@mixin content-width(
+    $columns: (
+        xsmall: 12
+    ),
+    $column-count: $sylph-grid-column-count,
+    $site-width: $base-width
+) {
+    margin-left: auto;
+    margin-right: auto;
+
+    @if type-of($columns) == 'map' {
+        @each $breakpoint, $col in $columns {
+            @include breakpoint($breakpoint) {
+                max-width: math.div($site-width, $column-count) * $col;
+            }
+        }
+    }
+    @else {
+        max-width: math.div($site-width, $column-count) * $columns;
+    }
+}
+
+/// Base grid.
+@mixin grid-base() {
+    .row-container {
+        @include gutter();
+    }
+
+    .row {
+        @include gutter(
+            $property: margin,
+            $factor: -1
+        );
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .column {
+        @include gutter();
+        position: relative;
+        width: 100%;
+        min-width: 0;
+    }
+}

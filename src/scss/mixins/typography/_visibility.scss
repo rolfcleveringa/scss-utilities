@@ -1,0 +1,36 @@
+// Hide from both screenreaders and browsers
+@mixin hidden {
+    display: none;
+    visibility: hidden;
+}
+
+@mixin visible($state: 'block') {
+    display: unquote($state);
+    visibility: visible;
+}
+
+// Hide visually and from screenreaders, but maintain layout
+@mixin invisible {
+    visibility: hidden;
+}
+
+// Visible for screenreader.
+@mixin element-invisible() {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+@mixin element-invisible-off() {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+}

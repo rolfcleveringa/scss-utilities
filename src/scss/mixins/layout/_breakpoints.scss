@@ -1,0 +1,63 @@
+/// Defined breakpoints with their respective sizes.
+$sylph-breakpoints: (
+    small: 480px, // phone wide
+    small-medium: 560px, // phablet
+    medium: 640px, // tablet small
+    medium-large: 768px, // tablet
+    large: 1024px, // tablet wide
+    xlarge: 1280px, // desktop
+    xxlarge: 1440px //desktop wide
+) !default;
+
+/// Breakpoint
+/// @parameter {String} $bp [small] - The minimum breakpoint from the $sylph-breakpoints map.
+/// @parameter {String} $mode [min] - Sets the width media feature, can be: min, max, between.
+/// @example scss
+///    @include breakpoint(large) {
+///        ...do stuff
+///    }
+@mixin breakpoint(
+    $breakpoints: small,
+    $mode: 'min'
+) {
+    // Get breakpoint size.
+    $bp: nth($breakpoints, 1);
+
+    // Get direction of media query (down: max-width)
+    $dir: if(length($breakpoints) > 1, nth($breakpoints, 2), up);
+
+    // Set output value.
+    $str: 'only screen';
+
+    // Check and get the breakpoint
+    @if type-of($bp) == 'string' {
+        @if map-has-key($sylph-breakpoints, $bp) {
+            $bp: map-get($sylph-breakpoints, $bp);
+        } @else {
+            $bp: 0;
+        }
+    }
+
+    // Convert px and unitless values to rems.
+    @if unit($bp) == 'px' or unit($bp) == '' {
+        $bp: rem-calc($bp);
+    }
+
+    // Convert rem value to an em value
+    $bp: strip-unit($bp) * 1em;
+
+    @if $dir == 'down' {
+        $max: $bp - math.div(1, 16);
+        $str: $str + ' and (max-width: #{$max})';
+    } @else {
+        $str: $str + ' and (min-width: #{$bp})';
+    }
+
+    @if $bp == 0em {
+        @content;
+    } @else {
+        @media #{$str} {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+// Transitions
+// -----------
+
+$base-transition-speed: .25s !default;
+$base-transition-easing: ease-in-out !default;
+
+/// A shorthand to create a transition on a selector.
+///
+/// @param {Number} $speed [$base-transition-speed] - The `transition-duration` property.
+/// @param {String} $easing [$base-transition-easing] - The `transition-timing` property.
+/// @param {Number} $delay [null] - The `transition-delay` property.
+/// @param {String} $property [all] - The `transition-property` property.
+@mixin transition(
+    $speed: $base-transition-speed,
+    $easing: $base-transition-easing,
+    $delay: null,
+    $property: all
+) {
+    transition: $speed $easing;
+
+    @if $delay {
+        transition-delay: $delay;
+    }
+    
+    @if $property {
+        transition-property: $property;
+    }
+}
