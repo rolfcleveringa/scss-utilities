@@ -1,0 +1,37 @@
+// Colors
+$primary-color: #32746d !default;
+$secondary-color: #3d5a80 !default;
+$info: #2f80ed !default;
+$success: #27ae60 !default;
+$warning: #e2b93b !default;
+$error: #eb5757 !default;
+$grey-lighter: #dce1e4 !default;
+$grey-light: #8c9aa6 !default;
+$grey-medium: #61707d !default;
+$grey-dark: #2c333a !default;
+$grey-darker: #22272c !default;
+$black: #121517 !default;
+$real-black: #000 !default;
+$white: #fff !default;
+
+// Font
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-black: 900 !default;
+
+// Base
+$base-font-family: 'Montserrat', 'Arial', sans-serif !default;
+$base-line-height: 1.5 !default;
+$base-text-color: $black !default;
+$base-weight-normal: $font-weight-light !default;
+$base-weight-bold: $font-weight-bold !default;
+
+$spacing: 1.5rem !default;
+
+
+:root {
+    --base-font-size: 100%;
+}

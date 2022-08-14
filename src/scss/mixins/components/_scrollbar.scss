@@ -3,9 +3,9 @@
 
 $sylph-scrollbar-width: rem-calc(8) !default;
 $sylph-scrollbar-border-radius: $sylph-scrollbar-width !default;
-$sylph-scrollbar-track: $grey-light !default;
-$sylph-scrollbar-thumb: $grey-medium !default;
-$sylph-scrollbar-thumb-hover: $grey-dark !default;
+$sylph-scrollbar-track: null !default;
+$sylph-scrollbar-thumb: null !default;
+$sylph-scrollbar-thumb-hover: null !default;
 
 /// Custom scrollbar styling.
 /// @param {Int} $width - The width of the scrollbar.

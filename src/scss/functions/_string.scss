@@ -21,11 +21,11 @@
     @return $str-1 $str-2;
 }
 
-// @function explode() -- split a string into a list of strings
-//  {string} $string: the string to be split
-//  {string} $delimiter: the boundary string
-//  @return {list} the result list
-// https://gist.github.com/danielpchen/3677421ea15dcf2579ff
+/// @function explode() -- split a string into a list of strings
+///  {string} $string: the string to be split
+///  {string} $delimiter: the boundary string
+///  @return {list} the result list
+/// @Link https://gist.github.com/danielpchen/3677421ea15dcf2579ff
 @function explode($string, $delimiter) {
 	$result: ();
 	@if $delimiter == "" {

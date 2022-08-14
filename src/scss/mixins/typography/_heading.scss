@@ -1,10 +1,10 @@
-$sylph-heading-margin: 0 0 $base-spacing;
-$sylph-heading-color: $base-text-color;
-$sylph-heading-font-family: $base-font-family;
-$sylph-heading-font-style: normal;
-$sylph-heading-font-weight: $base-weight-bold;
-$sylph-heading-line-height: 1.5;
-$sylph-headings: h1, h2, h3, h4, h5, h6;
+$sylph-heading-margin: null !default;
+$sylph-heading-color: null !default;
+$sylph-heading-font-family: null !default;
+$sylph-heading-font-style: null !default;
+$sylph-heading-font-weight: null !default;
+$sylph-heading-line-height: null !default;
+$sylph-headings: h1, h2, h3, h4, h5, h6 !default;
 $sylph-heading-styles: (
     xsmall: (
         'h1': (

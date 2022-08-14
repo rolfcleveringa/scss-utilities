@@ -1,3 +1,5 @@
+> Please don't use this package yet. For now it's just to test some things with npm packages.
+
 # scss-utilities
 
 [![NPM](https://img.shields.io/npm/v/scss-utilities.svg?style=flat-square)](https://www.npmjs.com/package/scss-utilities)
@@ -5,7 +7,10 @@
 
 A collection of [Sass](https://sass-lang.com/) functions and mixins.
 
-> Please don't use this package yet. For now it's just to test some things with npm packages.
+## Features
+- A handy, ready to use, library.
+- Easily convert `px` values to `rem`.
+- Use breakpoints without needing to write any media query.
 
 ## Installation
 
@@ -34,9 +39,9 @@ Depending on your setup, you may need to include the full path name:
 
 _Note: please make sure you add the correct path. It may be you have your sass file in a subdirectory._
 
-## Usage
+## Usage/Examples
 
-scss-utilities is a collection of usefull mixins and functions. You can use them directly in your own code.
+You can use them directly in your own code.
 
 ```scss
 @use "scss-utilities" as *;
@@ -48,7 +53,6 @@ ul {
 
 In order to prevent naming conflicts, you can also prefix the package, like so:
 
-
 ```scss
 @use "scss-utilities" as su;
 
@@ -59,7 +63,7 @@ ul {
 
 ## Support
 
-- Create a [GitHub issue](https://github.com/rolfcleveringa/scss-utilities/issues/new/choose) for bug reports and feature requests.
+Create a [GitHub issue](https://github.com/rolfcleveringa/scss-utilities/issues/new/choose) for bug reports and feature requests.
 
 ## License
 

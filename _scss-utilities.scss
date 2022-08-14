@@ -1,10 +1,7 @@
 // scss-utilities
 // --------------
 
-// Sass modules
-// https://sass-lang.com/documentation/modules
-@use "sass:math";
-
 // Imports
-@forward 'functions/functions';
-@forward 'mixins/mixins';
+@use 'src/scss/variables';
+@forward 'src/scss/functions/functions';
+@forward 'src/scss/mixins/mixins';

@@ -1,64 +1,78 @@
-$body-font-size: 100% !default;
+@use "sass:math";
 
-/// Strip unit
-/// It strips the unit of measure and returns it
-@function strip-unit($num) {
-    @return math.div($num, ($num * 0 + 1));
+/// Removes the unit from a value.
+/// @link https://github.com/foundation/foundation-sites/blob/develop/scss/util/_unit.scss
+///
+/// @param {Number} $value - Number to strip unit from.
+///
+/// @return The number stripped of its unit.
+@function strip-unit(
+    $value
+) {
+    @return math.div($value, $value * 0 + 1);
 }
 
-// CONVERT TO REM
+/// Converts a pixel value to matching rem value.
+/// @link https://github.com/foundation/foundation-sites/blob/develop/scss/util/_unit.scss
+/// @access private
+///
+/// @param {Number} $value - Number to convert.
+/// @param {Number} $base [100%] - Base for pixel conversion.
+///
+/// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
 @function convert-to-rem(
     $value,
-    $base-value: $body-font-size
+    $base-value: 100%
 ) {
+    @if type-of($value) != 'number' {
+        @warn inspect($value) + ' was passed to `rem-calc()`, which is not a number.';
+        @return $value;
+    }
+
     $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
+
+    // Turn 0rem into 0
     @if ($value == 0rem) {
         $value: 0;
     }
-    // Turn 0rem into 0
+
     @return $value;
 }
 
-// REM CALC
-
-// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
-// Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported:
-//
-//   rem-calc(10 20 30px 40);
-//
-// Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
-//
-//   rem-calc((10, 20, 30, 40px));
-//
-// Optionally call with a different base (eg: 8px) to calculate rem.
-//
-//   rem-calc(16px 32px 48px, 8px);
-//
-// If you require to comma separate your list
-//
-//   rem-calc((16px, 32px, 48), 8px);
-
+/// Converts one or more pixel values into matching rem values.
+/// @link https://github.com/foundation/foundation-sites/blob/develop/scss/util/_unit.scss
+///
+/// @param {Number|==} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+/// @param {Number} $base [100%] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$global-font-size` variable as the base.
+///
+/// @returns {List} A list of converted values.
 @function rem-calc(
     $values,
-    $base-value: $body-font-size
+    $base: 100%
 ) {
-    $max: length($values);
+    $rem-values: ();
+    $count: length($values);
 
-    @if unit($base-value) == '%' {
-        $base-value: math.div($base-value, 100%) * 16px;
-      }
-    
-      @if unit($base-value) == 'rem' {
-        $base-value: strip-unit($base-value) * 16px;
-      }
-
-    @if $max == 1 {
-        @return convert-to-rem(nth($values, 1), $base-value);
+    // If the base font size is a %, then multiply it by 16px
+    // This is because 100% font size = 16px in most all browsers
+    @if unit($base) == "%" {
+        $base: math.div($base, 100%) * 16px;
     }
 
-    $rem-values: ();
-    @for $i from 1 through $max {
-        $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
+    // Using rem as base allows correct scaling
+    @if unit($base) == "rem" {
+        $base: strip-unit($base) * 16px;
+    }
+
+    @if $count == 1 {
+        @return convert-to-rem($values, $base);
+    }
+
+    @for $i from 1 through $count {
+        $rem-values: append(
+            $rem-values,
+            convert-to-rem(nth($values, $i), $base)
+        );
     }
 
     @return $rem-values;
